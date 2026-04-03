@@ -1,0 +1,111 @@
+# =============================================================================
+# retrain.yml
+# PURPOSE: Automatically retrain the model when data drift is detected.
+#
+# WHAT IS GITHUB ACTIONS?
+#   GitHub Actions is a CI/CD platform built into GitHub. You define
+#   "workflows" in YAML files that run automatically on triggers like:
+#   - push to main branch
+#   - pull request
+#   - on a schedule (cron)
+#   - manually triggered
+#
+# THIS WORKFLOW:
+#   Runs every day at midnight UTC (cron schedule).
+#   Also runs manually via the GitHub UI (workflow_dispatch).
+#   Steps:
+#     1. Check out the code
+#     2. Set up Python
+#     3. Install dependencies
+#     4. Run drift detection
+#     5. If drift detected → retrain model
+#     6. Commit updated MLflow results back to repo
+# =============================================================================
+
+name: Drift Detection and Auto-Retrain
+
+on:
+  # run every day at midnight UTC
+  schedule:
+    - cron: "0 0 * * *"
+
+  # allow manual trigger from GitHub UI
+  workflow_dispatch:
+
+  # also run on every push to main
+  push:
+    branches: [main]
+    paths:
+      - "data/**"        # trigger if data changes
+      - "src/**"         # trigger if code changes
+
+jobs:
+  detect-and-retrain:
+    runs-on: ubuntu-latest
+
+    steps:
+      # STEP 1: check out the repository code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # STEP 2: set up Python 3.11
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      # STEP 3: cache pip dependencies
+      # WHY CACHE? Installing all packages takes 2-3 minutes.
+      # Caching saves the installed packages between runs.
+      # If requirements.txt hasn't changed, we skip installation entirely.
+      - name: Cache pip dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      # STEP 4: install dependencies
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      # STEP 5: download fresh data
+      # In production this would pull from your data warehouse.
+      # For now we re-download the UCI dataset.
+      - name: Download data
+        run: |
+          python src/download_data.py
+
+      # STEP 6: run drift detection
+      # Saves exit code — 0 means no drift, 1 means drift detected
+      - name: Run drift detection
+        id: drift
+        run: |
+          python src/monitor.py
+          echo "drift_detected=true" >> $GITHUB_OUTPUT
+        continue-on-error: true
+
+      # STEP 7: retrain if drift detected
+      # only runs if the previous step flagged drift
+      - name: Retrain model
+        if: steps.drift.outputs.drift_detected == 'true'
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          echo "Drift detected — retraining model..."
+          python src/train.py
+          echo "Retraining complete."
+
+      # STEP 8: commit MLflow results back to repo
+      # This saves the new model run results in the repo
+      - name: Commit MLflow results
+        if: steps.drift.outputs.drift_detected == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Actions"
+          git add notebooks/
+          git add mlruns/ || true
+          git diff --staged --quiet || git commit -m "auto: retrain after drift detection [skip ci]"
+          git push || true
