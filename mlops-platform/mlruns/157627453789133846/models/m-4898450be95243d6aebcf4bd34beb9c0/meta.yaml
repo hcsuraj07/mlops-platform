@@ -1,0 +1,10 @@
+artifact_location: /Users/surajhc/mlops-platform/mlruns/157627453789133846/models/m-4898450be95243d6aebcf4bd34beb9c0/artifacts
+creation_timestamp: 1775189173027
+experiment_id: '157627453789133846'
+last_updated_timestamp: 1775189176971
+model_id: m-4898450be95243d6aebcf4bd34beb9c0
+model_type: null
+name: model
+source_run_id: d70fa8133b034a98880cc5d2704239b8
+status: 2
+status_message: null

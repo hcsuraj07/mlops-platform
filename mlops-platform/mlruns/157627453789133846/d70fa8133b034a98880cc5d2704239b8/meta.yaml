@@ -1,0 +1,14 @@
+artifact_uri: /Users/surajhc/mlops-platform/mlruns/157627453789133846/d70fa8133b034a98880cc5d2704239b8/artifacts
+end_time: 1775189176997
+entry_point_name: ''
+experiment_id: '157627453789133846'
+lifecycle_stage: active
+run_id: d70fa8133b034a98880cc5d2704239b8
+run_name: xgboost-v1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1775189166525
+status: 3
+tags: []
+user_id: surajhc

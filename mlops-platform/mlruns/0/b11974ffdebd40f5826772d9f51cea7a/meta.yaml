@@ -1,0 +1,14 @@
+artifact_uri: /Users/surajhc/mlops-platform/mlruns/0/b11974ffdebd40f5826772d9f51cea7a/artifacts
+end_time: 1775220620473
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: b11974ffdebd40f5826772d9f51cea7a
+run_name: drift-detection
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1775220620438
+status: 3
+tags: []
+user_id: surajhc

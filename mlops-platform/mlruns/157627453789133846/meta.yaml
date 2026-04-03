@@ -1,0 +1,7 @@
+artifact_location: /Users/surajhc/mlops-platform/mlruns/157627453789133846
+creation_time: 1775188501615
+experiment_id: '157627453789133846'
+last_update_time: 1775188501615
+lifecycle_stage: active
+name: credit-default-prediction
+workspace: default

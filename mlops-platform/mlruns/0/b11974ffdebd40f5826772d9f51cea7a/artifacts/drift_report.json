@@ -1,0 +1,208 @@
+{
+  "overall_status": "critical \u2014 retrain recommended",
+  "n_drifted": 16,
+  "drifted_features": [
+    "payment_status_sep",
+    "payment_status_aug",
+    "payment_status_jul",
+    "payment_status_jun",
+    "payment_status_may",
+    "payment_status_apr",
+    "bill_amt_sep",
+    "bill_amt_aug",
+    "bill_amt_may",
+    "bill_amt_apr",
+    "payment_amt_sep",
+    "payment_amt_aug",
+    "payment_amt_jul",
+    "payment_amt_jun",
+    "payment_amt_may",
+    "payment_amt_apr"
+  ],
+  "feature_results": [
+    {
+      "feature": "credit_limit",
+      "psi": 0.0088,
+      "ks_statistic": 0.0177,
+      "ks_pvalue": 0.9178,
+      "drifted": false,
+      "psi_status": "stable"
+    },
+    {
+      "feature": "gender",
+      "psi": 0.0,
+      "ks_statistic": 0.0033,
+      "ks_pvalue": 1.0,
+      "drifted": false,
+      "psi_status": "stable"
+    },
+    {
+      "feature": "education",
+      "psi": 0.0045,
+      "ks_statistic": 0.023,
+      "ks_pvalue": 0.678,
+      "drifted": false,
+      "psi_status": "stable"
+    },
+    {
+      "feature": "marriage",
+      "psi": 0.0011,
+      "ks_statistic": 0.0101,
+      "ks_pvalue": 1.0,
+      "drifted": false,
+      "psi_status": "stable"
+    },
+    {
+      "feature": "age",
+      "psi": 0.0098,
+      "ks_statistic": 0.0168,
+      "ks_pvalue": 0.9432,
+      "drifted": false,
+      "psi_status": "stable"
+    },
+    {
+      "feature": "payment_status_sep",
+      "psi": 2.3201,
+      "ks_statistic": 0.5547,
+      "ks_pvalue": 0.0,
+      "drifted": true,
+      "psi_status": "critical"
+    },
+    {
+      "feature": "payment_status_aug",
+      "psi": 1.8522,
+      "ks_statistic": 0.6181,
+      "ks_pvalue": 0.0,
+      "drifted": true,
+      "psi_status": "critical"
+    },
+    {
+      "feature": "payment_status_jul",
+      "psi": 1.9559,
+      "ks_statistic": 0.6076,
+      "ks_pvalue": 0.0,
+      "drifted": true,
+      "psi_status": "critical"
+    },
+    {
+      "feature": "payment_status_jun",
+      "psi": 2.1567,
+      "ks_statistic": 0.626,
+      "ks_pvalue": 0.0,
+      "drifted": true,
+      "psi_status": "critical"
+    },
+    {
+      "feature": "payment_status_may",
+      "psi": 1.9574,
+      "ks_statistic": 0.6421,
+      "ks_pvalue": 0.0,
+      "drifted": true,
+      "psi_status": "critical"
+    },
+    {
+      "feature": "payment_status_apr",
+      "psi": 2.3698,
+      "ks_statistic": 0.6054,
+      "ks_pvalue": 0.0,
+      "drifted": true,
+      "psi_status": "critical"
+    },
+    {
+      "feature": "bill_amt_sep",
+      "psi": 0.026,
+      "ks_statistic": 0.0526,
+      "ks_pvalue": 0.0091,
+      "drifted": true,
+      "psi_status": "stable"
+    },
+    {
+      "feature": "bill_amt_aug",
+      "psi": 0.0194,
+      "ks_statistic": 0.0527,
+      "ks_pvalue": 0.0088,
+      "drifted": true,
+      "psi_status": "stable"
+    },
+    {
+      "feature": "bill_amt_jul",
+      "psi": 0.0175,
+      "ks_statistic": 0.0429,
+      "ks_pvalue": 0.0554,
+      "drifted": false,
+      "psi_status": "stable"
+    },
+    {
+      "feature": "bill_amt_jun",
+      "psi": 0.0208,
+      "ks_statistic": 0.0422,
+      "ks_pvalue": 0.0622,
+      "drifted": false,
+      "psi_status": "stable"
+    },
+    {
+      "feature": "bill_amt_may",
+      "psi": 0.015,
+      "ks_statistic": 0.0452,
+      "ks_pvalue": 0.0371,
+      "drifted": true,
+      "psi_status": "stable"
+    },
+    {
+      "feature": "bill_amt_apr",
+      "psi": 0.0185,
+      "ks_statistic": 0.0438,
+      "ks_pvalue": 0.0476,
+      "drifted": true,
+      "psi_status": "stable"
+    },
+    {
+      "feature": "payment_amt_sep",
+      "psi": 0.195,
+      "ks_statistic": 0.1753,
+      "ks_pvalue": 0.0,
+      "drifted": true,
+      "psi_status": "warning"
+    },
+    {
+      "feature": "payment_amt_aug",
+      "psi": 0.1763,
+      "ks_statistic": 0.1571,
+      "ks_pvalue": 0.0,
+      "drifted": true,
+      "psi_status": "warning"
+    },
+    {
+      "feature": "payment_amt_jul",
+      "psi": 0.1221,
+      "ks_statistic": 0.1467,
+      "ks_pvalue": 0.0,
+      "drifted": true,
+      "psi_status": "warning"
+    },
+    {
+      "feature": "payment_amt_jun",
+      "psi": 0.2087,
+      "ks_statistic": 0.1498,
+      "ks_pvalue": 0.0,
+      "drifted": true,
+      "psi_status": "critical"
+    },
+    {
+      "feature": "payment_amt_may",
+      "psi": 0.1187,
+      "ks_statistic": 0.1317,
+      "ks_pvalue": 0.0,
+      "drifted": true,
+      "psi_status": "warning"
+    },
+    {
+      "feature": "payment_amt_apr",
+      "psi": 0.1875,
+      "ks_statistic": 0.136,
+      "ks_pvalue": 0.0,
+      "drifted": true,
+      "psi_status": "warning"
+    }
+  ]
+}

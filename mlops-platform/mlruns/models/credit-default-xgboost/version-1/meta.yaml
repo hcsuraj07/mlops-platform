@@ -1,0 +1,16 @@
+creation_timestamp: 1775189176985
+current_stage: None
+deployment_job_state: null
+description: null
+last_updated_timestamp: 1775189176985
+model_id: m-4898450be95243d6aebcf4bd34beb9c0
+name: credit-default-xgboost
+run_id: d70fa8133b034a98880cc5d2704239b8
+run_link: null
+source: models:/m-4898450be95243d6aebcf4bd34beb9c0
+status: READY
+status_message: null
+storage_location: /Users/surajhc/mlops-platform/mlruns/157627453789133846/models/m-4898450be95243d6aebcf4bd34beb9c0/artifacts
+user_id: null
+version: 1
+workspace: default

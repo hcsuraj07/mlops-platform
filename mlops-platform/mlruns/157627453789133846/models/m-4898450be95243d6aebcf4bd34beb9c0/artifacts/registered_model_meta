@@ -1,0 +1,2 @@
+model_name: credit-default-xgboost
+model_version: '1'
